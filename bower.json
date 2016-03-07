@@ -5,7 +5,9 @@
     "Roland Barkoczi <barkoczi.roland@aercode.com>"
   ],
   "description": "ionic card templates for formly forms",
-  "main": "dist/index.js",
+  "main": [
+    "./dist/index.js"
+  ],
   "moduleType": [],
   "license": "MIT",
   "ignore": [

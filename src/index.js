@@ -4,7 +4,7 @@
 (function () {
 
 
-  angular.module('formlyAer', ['formly', 'formlyAer.templates'], function (formlyConfigProvider) {
+  angular.module('ng-angular-fornly-templates-ionic-card', ['formly', 'ng-angular-fornly-templates-ionic-card-templates'], function (formlyConfigProvider) {
     formlyConfigProvider.setWrapper({
       name: 'card',
       templateUrl: 'card.html'

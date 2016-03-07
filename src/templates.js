@@ -1,8 +1,8 @@
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('card.html',
@@ -33,9 +33,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('datum.html',
@@ -54,9 +54,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('datumtime.html',
@@ -88,9 +88,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('freehand.html',
@@ -100,9 +100,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('image.html',
@@ -120,9 +120,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('input.html',
@@ -136,9 +136,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('multiCheckbox.html',
@@ -152,9 +152,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('radio.html',
@@ -168,9 +168,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('range.html',
@@ -186,9 +186,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('rangeWrapper.html',
@@ -219,9 +219,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('select.html',
@@ -233,9 +233,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('textarea.html',
@@ -249,9 +249,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('time.html',
@@ -269,9 +269,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('ng-angular-fornly-templates-ionic-card');
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates');
 } catch (e) {
-  module = angular.module('ng-angular-fornly-templates-ionic-card', []);
+  module = angular.module('ng-angular-fornly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('toggle.html',

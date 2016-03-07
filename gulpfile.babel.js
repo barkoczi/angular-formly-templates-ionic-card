@@ -11,7 +11,7 @@ const template = () => {
 	debugger;
  gulp
   	.src('./src/templates/*.html')
-  	.pipe(html2js({moduleName: 'ng-angular-fornly-templates-ionic-card'}))
+  	.pipe(html2js({moduleName: 'ng-angular-fornly-templates-ionic-card-templates'}))
   	.pipe(concat('templates.js'))
   	.pipe(gulp.dest('./src'))
 };

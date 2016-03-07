@@ -1,0 +1,18 @@
+{
+  "name": "qm-angular-formly-templates-ionic-card",
+  "homepage": "https://github.com/barkoczi/qm-angular-formly-templates-ionic-card",
+  "authors": [
+    "Roland Barkoczi <barkoczi.roland@aercode.com>"
+  ],
+  "description": "ionic card templates for formly forms",
+  "main": "dist/index.js",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

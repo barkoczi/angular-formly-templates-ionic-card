@@ -1,0 +1,22 @@
+<div class="card">
+    <label class="item item-divider" for="{{model[options.key]}}"  ng-if="options.templateOptions.label" >
+        {{options.templateOptions.label}}
+    </label>
+    <div class="item item-text-wrap card-body">
+        <div class="card-description" ng-if="options.templateOptions.description" ng-bind-html="options.templateOptions.description"></div>
+        <formly-transclude></formly-transclude>
+        <div class="validation" ng-if="options.validation.errorExistsAndShouldBeVisible" ng-messages="options.formControl.$error">
+           <div ng-messages-include="validation.html"></div> 
+           <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">
+            {{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}   
+           </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/ng-template" id="validation.html">
+      <div ng-message="required">This field is required!</div>
+      <div ng-message="minlength">Too short!</div>
+      <div ng-message="maxlength">Too long!</div>
+      <div ng-message="email">Invalid email address!</div>
+    </script>

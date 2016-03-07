@@ -1,0 +1,10 @@
+ 
+<ionic-datepicker ng-model="model[options.key]" input-obj="datepickerObject" id="model[options.key]">
+    <button class="button button-light" type="button">
+        <i class="ion ion-android-calendar"></i>
+        <span ng-show="datepickerObject.inputDate"> {{datepickerObject.inputDate| date:'MM/dd/yyyy'}} </span>
+        <span ng-hide="datepickerObject.inputDate">
+            Select a date 
+        </span>
+    </button>
+</ionic-datepicker>

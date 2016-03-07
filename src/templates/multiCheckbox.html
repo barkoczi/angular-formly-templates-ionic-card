@@ -1,0 +1,5 @@
+<div class="radio-group">
+    <div class="checkbox-list-wrapper">
+        <ion-checkbox ng-repeat="(key, option) in to.options"  ng-model="multiCheckbox.checked[$index]"  ng-change="multiCheckbox.change()">{{option[to.labelProp || 'name']}}</ion-checkbox>
+    </div>   
+</div>

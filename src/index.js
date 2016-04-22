@@ -158,7 +158,6 @@
             $scope.datepickerObject.inputDate = false;
 
           } else {
-
             $scope.datepickerObject.inputDate = val;
             var datum = new moment(val);
             $scope.model[opts.key] = datum.format('YYYY-MM-DD');
@@ -166,6 +165,10 @@
           }
           checkValidity();
         };
+        var initDate = false;
+        if ($scope.model[opts.key]) {
+          initDate = moment($scope.model[opts.key], 'YYYY-MM-DD').toDate();
+        }
         $scope.datepickerObject = {
           titleLabel: $scope.to.label, //Optional
           todayLabel: 'Today', //Optional
@@ -174,7 +177,7 @@
           setButtonType: 'button-positive', //Optional
           todayButtonType: 'button-calm', //Optional
           closeButtonType: 'button-stable', //Optional
-          inputDate: false, //Optional
+          inputDate: initDate, //Optional
           mondayFirst: true, //Optional
 //                        disabledDates: disabledDates, //Optional
 //                        weekDaysList: weekDaysList, //Optional
@@ -229,9 +232,16 @@
           }
           checkValidity();
         };
+        var initTime = false;
+        if ($scope.model[opts.key]) {
+          var time = $scope.model[opts.key];
+          var hour = time.substr(11, 2);
+          var min = time.substr(14, 2);
+          initTime = (hour * 60 * 60 + parseInt(min) * 60)
+        }
         $scope.timePickerObject = {
-          inputEpochTime: null, //Optional
-          step: 5, //Optional
+          inputEpochTime: initTime, //Optional
+          step: 1, //Optional
           format: 12, //Optional
           titleLabel: $scope.to.label, //Optional
           setLabel: 'Set', //Optional
@@ -302,9 +312,20 @@
           }
           checkValidity();
         };
+        var initDate = false;
+        if ($scope.model[opts.key]) {
+          initDate = moment($scope.model[opts.key], 'YYYY-MM-DD').toDate();
+        }
+        var initTime = false;
+        if ($scope.model[opts.key]) {
+          var time = $scope.model[opts.key];
+          var hour = time.substr(11, 2);
+          var min = time.substr(14, 2);
+          initTime = (hour * 60 * 60 + parseInt(min) * 60)
+        }
         $scope.timePickerObject = {
-          inputEpochTime: null, //Optional
-          step: 5, //Optional
+          inputEpochTime: initTime, //Optional
+          step: 1, //Optional
           format: 12, //Optional
           titleLabel: $scope.to.label, //Optional
           setLabel: 'Set', //Optional
@@ -332,7 +353,7 @@
           setButtonType: 'button-positive', //Optional
           todayButtonType: 'button-calm', //Optional
           closeButtonType: 'button-stable', //Optional
-          inputDate: false, //Optional
+          inputDate: initDate, //Optional
           mondayFirst: true, //Optional
 //                        disabledDates: disabledDates, //Optional
 //                        weekDaysList: weekDaysList, //Optional

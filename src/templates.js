@@ -256,9 +256,9 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('time.html',
     '<ionic-timepicker  ng-model="model[options.key]"  input-obj="timePickerObject" id="model[options.key]">\n' +
-    '  <button class="button button-light">\n' +
+    '  <button class="button button-light" type="button">\n' +
     '    <i class="ion ion-clock"></i>\n' +
-    '    <standard-time-meridian  ng-show="timePickerObject.inputEpochTime" etime=\'timePickerObject.inputEpochTime\'></standard-time-meridian>\n' +
+    '    <standard-time-meridian ng-show="timePickerObject.inputEpochTime" etime=\'timePickerObject.inputEpochTime\'></standard-time-meridian>\n' +
     '    <span ng-hide="timePickerObject.inputEpochTime">\n' +
     '             Select a Time\n' +
     '        </span>\n' +

@@ -1,7 +1,7 @@
 <ionic-timepicker  ng-model="model[options.key]"  input-obj="timePickerObject" id="model[options.key]">
-  <button class="button button-light">
+  <button class="button button-light" type="button">
     <i class="ion ion-clock"></i>
-    <standard-time-meridian  ng-show="timePickerObject.inputEpochTime" etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+    <standard-time-meridian ng-show="timePickerObject.inputEpochTime" etime='timePickerObject.inputEpochTime'></standard-time-meridian>
     <span ng-hide="timePickerObject.inputEpochTime">
              Select a Time
         </span>

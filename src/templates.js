@@ -157,6 +157,22 @@ try {
   module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('number.html',
+    ' \n' +
+    '    <input ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n' +
+    '           type="number"  id="{{model[options.key]}}" pattern="\\d*">\n' +
+    ' \n' +
+    '');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+} catch (e) {
+  module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('radio.html',
     '<div class="radio-group">\n' +
     '    <div class="list">\n' +
@@ -278,5 +294,22 @@ module.run(['$templateCache', function($templateCache) {
     '<ion-toggle ng-model="model[options.key]" toggle-class="toggle-{{options.templateOptions.toggleClass}}">\n' +
     '   <span ng-bind-html="options.templateOptions.accept"></span>\n' +
     '</ion-toggle>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+} catch (e) {
+  module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('video.html',
+    '\n' +
+    '<div class="videoArea" id="{{options.key}}"></div>\n' +
+    '<input type="hidden"  ng-model="model[options.key]"/>\n' +
+    '<button ng-click="start()" class="button button-block button-assertive icon-left ion-record" type="button">\n' +
+    '    Start recording\n' +
+    '</button>');
 }]);
 })();

@@ -108,6 +108,11 @@
       templateUrl: 'input.html',
       wrapper: 'card',
     });
+    types.push({
+      name: 'number',
+      templateUrl: 'number.html',
+      wrapper: 'card',
+    });
     //textarea
     types.push({
       name: 'textarea',
@@ -140,6 +145,7 @@
         };
       }
     });
+
     //datum
     types.push({
       name: 'datum',
@@ -451,6 +457,50 @@
       wrapper: 'card'
     });
 
+    types.push({
+      name: 'video',
+      templateUrl: 'video.html',
+      wrapper: 'card',
+      controller: /* @ngInject */ function ($scope) {
+        var opts = $scope.options;
+
+        var checkValidity = function () {
+          var valid;
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+          if ($scope.to.required) {
+            valid = $scope.model[opts.key] ? true : false;
+            $scope.fc.$setValidity('required', valid);
+          }
+        };
+
+        var captureSuccess = function (mediaFiles) {
+          var i, path, len;
+          for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            $scope.model[opts.key] = mediaFiles[i];
+            console.log(mediaFiles[i], $scope.model);
+            var v = "<video controls='controls'>";
+            v += "<source src='" + $scope.model[opts.key].fullPath + " type='" + $scope.model[opts.key].type + "'>";
+            v += "</video>";
+            document.querySelector("#" + opts.key).innerHTML = v;
+            
+            checkValidity(true);
+            $scope.$apply();
+          }
+        };
+// capture error callback
+        var captureError = function (error) {
+          navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+          $scope.model[opts.key] = null;
+          checkValidity();
+        };
+        $scope.start = function () {
+          navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1, duration: parseInt(opts.templateOptions.videolength)});
+        };
+
+      }
+    });
+    
     formlyConfigProvider.setType(types);
 
 

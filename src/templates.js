@@ -6,8 +6,8 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('card.html',
-    '<div class="card">\n' +
-    '    <label class="item item-divider" for="{{model[options.key]}}"  ng-if="options.templateOptions.label" >\n' +
+    '<div class="card" id="card{{options.key}}">\n' +
+    '    <label class="item item-divider" for="q{{options.key}}"  ng-if="options.templateOptions.label" >\n' +
     '        {{options.templateOptions.label}}\n' +
     '    </label>\n' +
     '    <div class="item item-text-wrap card-body">\n' +
@@ -40,7 +40,7 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('datum.html',
     ' \n' +
-    '<ionic-datepicker ng-model="model[options.key]" input-obj="datepickerObject" id="model[options.key]">\n' +
+    '<ionic-datepicker ng-model="model[options.key]" input-obj="datepickerObject" id="q{{options.key}}">\n' +
     '    <button class="button button-light" type="button">\n' +
     '        <i class="ion ion-android-calendar"></i>\n' +
     '        <span ng-show="datepickerObject.inputDate"> {{datepickerObject.inputDate| date:\'MM/dd/yyyy\'}} </span>\n' +
@@ -61,7 +61,7 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('datumtime.html',
     '\n' +
-    '<div  ng-model="model[options.key]"  id="model[options.key]" class="datumtime">\n' +
+    '<div  ng-model="model[options.key]"  id="q{{options.key}}" class="datumtime">\n' +
     '    <ionic-datepicker input-obj="datepickerObject">\n' +
     '        <button class="button button-light" type="button">\n' +
     '            <i class="ion ion-android-calendar"></i>\n' +
@@ -109,10 +109,10 @@ module.run(['$templateCache', function($templateCache) {
     '<button class="button  button-block button-light" ng-click="openFileDlg()" type="button">\n' +
     '    <i class="ion ion-ios-camera"></i> Take a Photo\n' +
     '</button>\n' +
-    '<input type="file" id="{{options.key}}"  accept="image/*" style="display:none" capture="camera">\n' +
+    '<input type="file" id="q{{options.key}}"  accept="image/*" style="display:none" capture="camera">\n' +
     '<input type="hidden"  ng-model="model[options.key]"/>\n' +
     '<div class="item item-image">\n' +
-    '<img  ng-src="{{resizedSrc}}" ng-show="resizedSrc" class="full-image" id="{{options.key}}Resized" />\n' +
+    '<img  ng-src="{{resizedSrc}}" ng-show="resizedSrc" class="full-image" id="q{{options.key}}Resized" />\n' +
     '</div>\n' +
     '');
 }]);
@@ -128,7 +128,7 @@ module.run(['$templateCache', function($templateCache) {
   $templateCache.put('input.html',
     ' \n' +
     '    <input ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n' +
-    '           type="{{options.templateOptions.type}}" id="{{model[options.key]}}">\n' +
+    '           type="{{options.templateOptions.type}}" id="q{{options.key}}">\n' +
     ' \n' +
     '');
 }]);
@@ -160,7 +160,7 @@ module.run(['$templateCache', function($templateCache) {
   $templateCache.put('number.html',
     ' \n' +
     '    <input ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n' +
-    '           type="number"  id="{{model[options.key]}}" pattern="\\d*">\n' +
+    '           type="number"  id="q{{options.key}}" pattern="\\d*">\n' +
     ' \n' +
     '');
 }]);
@@ -209,7 +209,7 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('rangeWrapper.html',
     '<div class="card rangeWrapper">\n' +
-    '    <label class="item item-divider" for="{{model[options.key]}}"  ng-if="options.templateOptions.label" >\n' +
+    '    <label class="item item-divider" for="q{{options.key}}"  ng-if="options.templateOptions.label" >\n' +
     '        {{options.templateOptions.label}}<span class="badge badge-positive">{{model[options.key]?model[options.key]:\'-\'}}</span>\n' +
     '    </label>\n' +
     '    <div class="item item-text-wrap card-body">\n' +
@@ -257,7 +257,7 @@ module.run(['$templateCache', function($templateCache) {
   $templateCache.put('textarea.html',
     ' \n' +
     '    <textarea ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n' +
-    '           type="{{options.templateOptions.type}}" id="{{model[options.key]}}"></textarea>\n' +
+    '           type="{{options.templateOptions.type}}" id="q{{options.key}}"></textarea>\n' +
     ' \n' +
     '');
 }]);
@@ -271,7 +271,7 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('time.html',
-    '<ionic-timepicker  ng-model="model[options.key]"  input-obj="timePickerObject" id="model[options.key]">\n' +
+    '<ionic-timepicker  ng-model="model[options.key]"  input-obj="timePickerObject" id="q{{options.key}}">\n' +
     '  <button class="button button-light" type="button">\n' +
     '    <i class="ion ion-clock"></i>\n' +
     '    <standard-time-meridian ng-show="timePickerObject.inputEpochTime" etime=\'timePickerObject.inputEpochTime\'></standard-time-meridian>\n' +
@@ -306,7 +306,7 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('video.html',
     '\n' +
-    '<div class="videoArea" id="{{options.key}}"></div>\n' +
+    '<div class="videoArea" id="q{{options.key}}"></div>\n' +
     '<input type="hidden"  ng-model="model[options.key]"/>\n' +
     '<button ng-click="start()" class="button button-block button-assertive icon-left ion-record" type="button">\n' +
     '    Start recording\n' +

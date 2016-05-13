@@ -1,8 +1,8 @@
 <button class="button  button-block button-light" ng-click="openFileDlg()" type="button">
     <i class="ion ion-ios-camera"></i> Take a Photo
 </button>
-<input type="file" id="{{options.key}}"  accept="image/*" style="display:none" capture="camera">
+<input type="file" id="q{{options.key}}"  accept="image/*" style="display:none" capture="camera">
 <input type="hidden"  ng-model="model[options.key]"/>
 <div class="item item-image">
-<img  ng-src="{{resizedSrc}}" ng-show="resizedSrc" class="full-image" id="{{options.key}}Resized" />
+<img  ng-src="{{resizedSrc}}" ng-show="resizedSrc" class="full-image" id="q{{options.key}}Resized" />
 </div>

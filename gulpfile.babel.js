@@ -23,7 +23,7 @@ const build = () => {
     .pipe(plumber())
     .pipe(babel())
     .pipe(ngAnnotate())
-    .pipe(uglify())
+   // .pipe(uglify())
     .pipe(concat('index.js'))
     .pipe(gulp.dest('./dist'));
 };

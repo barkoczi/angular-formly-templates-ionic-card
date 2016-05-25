@@ -1,2 +1,676 @@
-"use strict";!function(){angular.module("qm-angular-formly-templates-ionic-card",["formly","qm-angular-formly-templates-ionic-card-templates"],["formlyConfigProvider",function(e){e.setWrapper({name:"card",templateUrl:"card.html"}),e.setWrapper({name:"rangeWrapper",templateUrl:"rangeWrapper.html"});var t=[];t.push({name:"multiCheckbox",templateUrl:"multiCheckbox.html",wrapper:"card",defaultOptions:{noFormControl:!1,ngModelAttrs:{required:{attribute:"",bound:""}}},controller:["$scope",function(e){function t(t){var o;e.to.required&&(o=angular.isArray(e.model[a.key])&&e.model[a.key].length>0&&t,e.fc.$setValidity("required",o))}function o(){e.model[a.key]=[],angular.forEach(e.multiCheckbox.checked,function(t,o){t&&e.model[a.key].push(r.options[o][r.valueProp||"value"])}),e.fc.$setTouched(),e.fc.$setDirty(),e.fc.$modelValue=e.model[a.key].join(","),t(!0)}var r=e.to,a=e.options;if(e.$watch("model",function(t){var o,n;Object.keys(t).length&&(o=t[a.key],e.$watch("to.options",function(t){if(t&&Array.isArray(t)&&Array.isArray(o)){n=r.valueProp||"value";for(var a=0;a<t.length;a++)e.multiCheckbox.checked[a]=-1!==o.indexOf(t[a][n])}}))},!0),a.expressionProperties&&a.expressionProperties["templateOptions.required"]&&e.$watch(function(){return e.to.required},function(e){t(e)}),e.to.required)var n=e.$watch("fc",function(e){e&&(t(!0),n())});e.multiCheckbox={checked:[],change:o}}]}),t.push({name:"input",templateUrl:"input.html",wrapper:"card"}),t.push({name:"number",templateUrl:"number.html",wrapper:"card"}),t.push({name:"textarea",templateUrl:"textarea.html",wrapper:"card"}),t.push({name:"select",templateUrl:"select.html",wrapper:"card"}),t.push({name:"radio",templateUrl:"radio.html",wrapper:"card",defaultOptions:{noFormControl:!1},controller:["$scope",function(e){var t=function(){e.fc.$setDirty(),e.fc.$setTouched()};e.radio={change:t}}]}),t.push({name:"datum",templateUrl:"datum.html",wrapper:"card",defaultOptions:{noFormControl:!1},controller:["$scope",function(e){function t(){var t;e.to.required&&(t=e.datepickerObject.inputDate instanceof Date,console.log(t),e.fc.$setValidity("required",t))}var o=e.options,r=function(r){if(e.fc.$setDirty(),e.fc.$setTouched(),"undefined"==typeof r)delete e.model[o.key],e.datepickerObject.inputDate=!1;else{e.datepickerObject.inputDate=r;var a=new moment(r);e.model[o.key]=a.format("YYYY-MM-DD")}t()},a=!1;e.model[o.key]&&(a=moment(e.model[o.key],"YYYY-MM-DD").toDate()),e.datepickerObject={titleLabel:e.to.label,todayLabel:"Today",closeLabel:"Close",setLabel:"Set",setButtonType:"button-positive",todayButtonType:"button-calm",closeButtonType:"button-stable",inputDate:a,mondayFirst:!0,templateType:"modal",showTodayButton:"true",modalHeaderColor:"bar-stable",modalFooterColor:"bar-stable",callback:function(e){r(e)}}}]}),t.push({name:"time",templateUrl:"time.html",wrapper:"card",defaultOptions:{noFormControl:!1},controller:["$scope",function(e){function t(){var t;e.to.required&&(t="undefined"!==e.timePickerObject.inputEpochTime,e.fc.$setValidity("required",t))}var o=e.options,r=function(r){if(e.fc.$setDirty(),e.fc.$setTouched(),"undefined"==typeof r)delete e.model[o.key],e.timePickerObject.inputEpochTime=void 0;else{e.timePickerObject.inputEpochTime=r;var a=parseInt(r/3600),n=r/60%60;String(a).length<2&&(a="0"+a),String(n).length<2&&(n="0"+n),e.model[o.key]=a+":"+n}t()},a=!1;if(e.model[o.key]){var n=e.model[o.key],i=n.substr(11,2),l=n.substr(14,2);a=60*i*60+60*parseInt(l)}e.timePickerObject={inputEpochTime:a,step:1,format:12,titleLabel:e.to.label,setLabel:"Set",closeLabel:"Close",setButtonType:"button-positive",closeButtonType:"button-stable",callback:function(e){r(e)}}}]}),t.push({name:"datumtime",templateUrl:"datumtime.html",wrapper:"card",defaultOptions:{noFormControl:!1},controller:["$scope",function(e){function t(){var t;e.to.required&&(t="undefined"!==e.timePickerObject.inputEpochTime,e.fc.$setValidity("required",t))}var o=e.options,r=function(){if(e.datepickerObject.inputDate instanceof Date&&e.timePickerObject.inputEpochTime){var t=parseInt(e.timePickerObject.inputEpochTime/3600),r=e.timePickerObject.inputEpochTime/60%60,a=moment(e.datepickerObject.inputDate);a.hour(t),a.minute(r),e.model[o.key]=a.format("YYYY-MM-DD HH:mm")}else delete e.model[o.key]},a=function(a){e.fc.$setDirty(),e.fc.$setTouched(),"undefined"==typeof a?(delete e.model[o.key],e.datepickerObject.inputDate=!1):(e.datepickerObject.inputDate=a,r()),t()},n=function(a){e.fc.$setDirty(),e.fc.$setTouched(),"undefined"==typeof a?(delete e.model[o.key],e.timePickerObject.inputEpochTime=void 0):(e.timePickerObject.inputEpochTime=a,r()),t()},i=!1;e.model[o.key]&&(i=moment(e.model[o.key],"YYYY-MM-DD").toDate());var l=!1;if(e.model[o.key]){var c=e.model[o.key],p=c.substr(11,2),u=c.substr(14,2);l=60*p*60+60*parseInt(u)}e.timePickerObject={inputEpochTime:l,step:1,format:12,titleLabel:e.to.label,setLabel:"Set",closeLabel:"Close",setButtonType:"button-positive",closeButtonType:"button-stable",callback:function(e){n(e)}},e.datepickerObject={titleLabel:e.to.label,todayLabel:"Today",closeLabel:"Close",setLabel:"Set",setButtonType:"button-positive",todayButtonType:"button-calm",closeButtonType:"button-stable",inputDate:i,mondayFirst:!0,templateType:"modal",showTodayButton:"true",modalHeaderColor:"bar-stable",modalFooterColor:"bar-stable",callback:function(e){a(e)}}}]}),t.push({name:"image",templateUrl:"image.html",wrapper:"card",controller:["$scope",function(e){function t(){var t;e.to.required&&(t=angular.isDefined(e.model[o.key])&&e.model[o.key].length>0,e.fc.$setValidity("required",t))}var o=e.options;e.resizedSrc="",$("body").on("change","#"+e.options.key,function(r){var a=r.dataTransfer||r.target,n=a&&a.files&&a.files[0],i={canvas:!0,maxWidth:1024};loadImage.parseMetaData(n,function(r){r.exif&&(i.orientation=r.exif.get("Orientation")),loadImage(n,function(r){e.$apply(function(){e.resizedSrc=r.toDataURL("image/jpeg",.8),e.model[o.key]=r.toDataURL("image/jpeg",.8)}),t()},i)})}),e.openFileDlg=function(){$("#"+e.options.key).click(),e.fc.$setDirty(),e.fc.$setTouched()}}]}),t.push({name:"freehand",templateUrl:"freehand.html",wrapper:"card",controller:["$scope",function(e){var t=e.options;e.resizedSrc="",e.checkValidity=function(){e.fc.$setDirty(),e.fc.$setTouched();var o;e.to.required&&(o=angular.isDefined(e.model[t.key])&&e.model[t.key].length>0,e.fc.$setValidity("required",o))}}]}),t.push({name:"range",templateUrl:"range.html",wrapper:"rangeWrapper"}),t.push({name:"toggle",templateUrl:"toggle.html",wrapper:"card"}),t.push({name:"video",templateUrl:"video.html",wrapper:"card",controller:["$scope",function(e){var t=e.options,o=function(){var o;e.fc.$setDirty(),e.fc.$setTouched(),e.to.required&&(o=!!e.model[t.key],e.fc.$setValidity("required",o))},r=function(r){var a,n;for(a=0,n=r.length;n>a;a+=1){e.model[t.key]=r[a],console.log(r[a],e.model);var i="<video controls='controls'>";i+="<source src='"+e.model[t.key].fullPath+" type='"+e.model[t.key].type+"'>",i+="</video>",document.querySelector("#"+t.key).innerHTML=i,o(!0),e.$apply()}},a=function(r){navigator.notification.alert("Error code: "+r.code,null,"Capture Error"),e.model[t.key]=null,o()};e.start=function(){navigator.device.capture.captureVideo(r,a,{limit:1,duration:parseInt(t.templateOptions.videolength)})}}]}),e.setType(t)}])}();
-"use strict";!function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("card.html",'<div class="card" id="card{{options.key}}">\n    <label class="item item-divider" for="q{{options.key}}"  ng-if="options.templateOptions.label" >\n        {{options.templateOptions.label}}\n    </label>\n    <div class="item item-text-wrap card-body">\n        <div class="card-description" ng-if="options.templateOptions.description" ng-bind-html="options.templateOptions.description"></div>\n        <formly-transclude></formly-transclude>\n        <div class="validation" ng-if="options.validation.errorExistsAndShouldBeVisible" ng-messages="options.formControl.$error">\n           <div ng-messages-include="validation.html"></div> \n           <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">\n            {{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}   \n           </div>\n        </div>\n    </div>\n\n</div>\n<script type="text/ng-template" id="validation.html">\n      <div ng-message="required">This field is required!</div>\n      <div ng-message="minlength">Too short!</div>\n      <div ng-message="maxlength">Too long!</div>\n      <div ng-message="email">Invalid email address!</div>\n    </script>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("datum.html",' \n<ionic-datepicker ng-model="model[options.key]" input-obj="datepickerObject" id="q{{options.key}}">\n    <button class="button button-light" type="button">\n        <i class="ion ion-android-calendar"></i>\n        <span ng-show="datepickerObject.inputDate"> {{datepickerObject.inputDate| date:\'MM/dd/yyyy\'}} </span>\n        <span ng-hide="datepickerObject.inputDate">\n            Select a date \n        </span>\n    </button>\n</ionic-datepicker>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("datumtime.html",'\n<div  ng-model="model[options.key]"  id="q{{options.key}}" class="datumtime">\n    <ionic-datepicker input-obj="datepickerObject">\n        <button class="button button-light" type="button">\n            <i class="ion ion-android-calendar"></i>\n            <span ng-show="datepickerObject.inputDate"> {{datepickerObject.inputDate| date:\'MM/dd/yyyy\'}} </span>\n            <span ng-hide="datepickerObject.inputDate">\n                Select a Date\n            </span>\n        </button>\n    </ionic-datepicker>\n    \n    <ionic-timepicker   input-obj="timePickerObject" >\n      <button class="button button-light" type="button">\n        <i class="ion ion-clock"></i>\n        <standard-time-meridian  ng-show="timePickerObject.inputEpochTime" etime=\'timePickerObject.inputEpochTime\'></standard-time-meridian>\n        <span ng-hide="timePickerObject.inputEpochTime">\n                Select a Time\n            </span>\n      </button>\n    </ionic-timepicker>\n</div>\n')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("freehand.html",'<signature-pad ng-model="model[options.key]" ng-change="checkValidity()" ></signature-pad>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("image.html",'<button class="button  button-block button-light" ng-click="openFileDlg()" type="button">\n    <i class="ion ion-ios-camera"></i> Take a Photo\n</button>\n<input type="file" id="q{{options.key}}"  accept="image/*" style="display:none" capture="camera">\n<input type="hidden"  ng-model="model[options.key]"/>\n<div class="item item-image">\n<img  ng-src="{{resizedSrc}}" ng-show="resizedSrc" class="full-image" id="q{{options.key}}Resized" />\n</div>\n')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("input.html",' \n    <input ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n           type="{{options.templateOptions.type}}" id="q{{options.key}}">\n \n')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("multiCheckbox.html",'<div class="radio-group">\n    <div class="checkbox-list-wrapper">\n        <ion-checkbox ng-repeat="(key, option) in to.options"  ng-model="multiCheckbox.checked[$index]"  ng-change="multiCheckbox.change()">{{option[to.labelProp || \'name\']}}</ion-checkbox>\n    </div>   \n</div>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("number.html",' \n    <input ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n           type="number"  id="q{{options.key}}" pattern="\\d*">\n \n')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("radio.html",'<div class="radio-group">\n    <div class="list">\n        <ion-radio ng-repeat="(key, option) in to.options"  tabindex="0"  ng-model="model[options.key]" ng-change="radio.change()"  ng-value="option[to.valueProp || \'value\']">{{option[to.labelProp || \'name\']}}</ion-radio>\n    </div>   \n</div>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("range.html",'<div class="item range" ng-class="\'range-\' + options.templateOptions.rangeClass">\n  <i class="icon" ng-if="options.templateOptions.minIcon" ng-class="options.templateOptions.minIcon"></i>\n  {{options.templateOptions.min}}\n  <input type="range" min="{{options.templateOptions.min}}" max="{{options.templateOptions.max}}" step="{{options.templateOptions.step}}" value="{{options.templateOptions.value}}" ng-model="model[options.key]">\n  <i class="icon" ng-if="options.templateOptions.maxIcon" ng-class="options.templateOptions.maxIcon"></i>\n  {{options.templateOptions.max}}\n</div>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("rangeWrapper.html",'<div class="card rangeWrapper">\n    <label class="item item-divider" for="q{{options.key}}"  ng-if="options.templateOptions.label" >\n        {{options.templateOptions.label}}<span class="badge badge-positive">{{model[options.key]?model[options.key]:\'-\'}}</span>\n    </label>\n    <div class="item item-text-wrap card-body">\n        <div class="card-description" ng-if="options.templateOptions.description" ng-bind-html="options.templateOptions.description"></div>\n        <formly-transclude></formly-transclude>\n        <div class="validation" ng-if="options.validation.errorExistsAndShouldBeVisible" ng-messages="options.formControl.$error">\n           <div ng-messages-include="validation.html"></div> \n           <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">\n            {{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}   \n           </div>\n        </div>\n    </div>\n\n</div>\n<script type="text/ng-template" id="validation.html">\n      <div ng-message="required">This field is required!</div>\n      <div ng-message="minlength">Too short!</div>\n      <div ng-message="maxlength">Too long!</div>\n      <div ng-message="email">Invalid email address!</div>\n    </script>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("select.html","<select ng-model=\"model[options.key]\" \n          ng-options=\"option[to.valueProp || 'value'] as option[to.labelProp || 'name'] group by option[to.groupProp || 'group'] for option in to.options\">\n  </select>")}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("textarea.html",' \n    <textarea ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n           type="{{options.templateOptions.type}}" id="q{{options.key}}"></textarea>\n \n')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("time.html",'<ionic-timepicker  ng-model="model[options.key]"  input-obj="timePickerObject" id="q{{options.key}}">\n  <button class="button button-light" type="button">\n    <i class="ion ion-clock"></i>\n    <standard-time-meridian ng-show="timePickerObject.inputEpochTime" etime=\'timePickerObject.inputEpochTime\'></standard-time-meridian>\n    <span ng-hide="timePickerObject.inputEpochTime">\n             Select a Time\n        </span>\n  </button>\n</ionic-timepicker>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("toggle.html",'<ion-toggle ng-model="model[options.key]" toggle-class="toggle-{{options.templateOptions.toggleClass}}">\n   <span ng-bind-html="options.templateOptions.accept"></span>\n</ion-toggle>')}])}(),function(t){try{t=angular.module("qm-angular-formly-templates-ionic-card-templates")}catch(e){t=angular.module("qm-angular-formly-templates-ionic-card-templates",[])}t.run(["$templateCache",function(t){t.put("video.html",'\n<div class="videoArea" id="q{{options.key}}"></div>\n<input type="hidden"  ng-model="model[options.key]"/>\n<button ng-click="start()" class="button button-block button-assertive icon-left ion-record" type="button">\n    Start recording\n</button>')}])}();
+'use strict';
+/* globals moment: true */
+/* globals $: true */
+
+(function () {
+
+  angular.module('qm-angular-formly-templates-ionic-card', ['formly', 'qm-angular-formly-templates-ionic-card-templates'], ["formlyConfigProvider", function (formlyConfigProvider) {
+    formlyConfigProvider.setWrapper({
+      name: 'card',
+      templateUrl: 'card.html'
+    });
+
+    formlyConfigProvider.setWrapper({
+      name: 'rangeWrapper',
+      templateUrl: 'rangeWrapper.html'
+    });
+
+    var types = [];
+    /**
+     * Multicheckbox
+     */
+    types.push({
+      name: 'multiCheckbox',
+      templateUrl: 'multiCheckbox.html',
+      wrapper: 'card',
+      defaultOptions: {
+        noFormControl: false,
+        ngModelAttrs: {
+          required: {
+            attribute: '',
+            bound: ''
+          }
+        }
+      },
+      controller: /* @ngInject */["$scope", function controller($scope) {
+        var to = $scope.to;
+        var opts = $scope.options;
+
+        // initialize the checkboxes check property
+        $scope.$watch('model', function (newModelValue) {
+          var modelValue, valueProp;
+
+          if (Object.keys(newModelValue).length) {
+            modelValue = newModelValue[opts.key];
+
+            $scope.$watch('to.options', function (newOptionsValues) {
+              if (newOptionsValues && Array.isArray(newOptionsValues) && Array.isArray(modelValue)) {
+                valueProp = to.valueProp || 'value';
+                for (var index = 0; index < newOptionsValues.length; index++) {
+                  $scope.multiCheckbox.checked[index] = modelValue.indexOf(newOptionsValues[index][valueProp]) !== -1;
+                }
+              }
+            });
+          }
+        }, true);
+
+        function checkValidity(expressionValue) {
+          var valid;
+          if ($scope.to.required) {
+            valid = angular.isArray($scope.model[opts.key]) && $scope.model[opts.key].length > 0 && expressionValue;
+
+            $scope.fc.$setValidity('required', valid);
+          }
+        }
+
+        function setModel() {
+          $scope.model[opts.key] = [];
+          angular.forEach($scope.multiCheckbox.checked, function (checkbox, index) {
+            if (checkbox) {
+              $scope.model[opts.key].push(to.options[index][to.valueProp || 'value']);
+            }
+          });
+          // Must make sure we mark as touched because only the last checkbox due to a bug in angular.
+          $scope.fc.$setTouched();
+          $scope.fc.$setDirty();
+          $scope.fc.$modelValue = $scope.model[opts.key].join(',');
+          checkValidity(true);
+        }
+
+        if (opts.expressionProperties && opts.expressionProperties['templateOptions.required']) {
+          $scope.$watch(function () {
+            return $scope.to.required;
+          }, function (newValue) {
+            checkValidity(newValue);
+          });
+        }
+
+        if ($scope.to.required) {
+          var unwatchFormControl = $scope.$watch('fc', function (newValue) {
+            if (!newValue) {
+              return;
+            }
+            checkValidity(true);
+            unwatchFormControl();
+          });
+        }
+        $scope.multiCheckbox = {
+          checked: [],
+          change: setModel
+        };
+      }]
+    });
+    //input
+    types.push({
+      name: 'input',
+      templateUrl: 'input.html',
+      wrapper: 'card'
+    });
+    types.push({
+      name: 'number',
+      templateUrl: 'number.html',
+      wrapper: 'card'
+    });
+    //textarea
+    types.push({
+      name: 'textarea',
+      templateUrl: 'textarea.html',
+      wrapper: 'card'
+    });
+    //select
+    types.push({
+      name: 'select',
+      templateUrl: 'select.html',
+      wrapper: 'card'
+    });
+    //radio
+    types.push({
+      name: 'radio',
+      templateUrl: 'radio.html',
+      wrapper: 'card',
+      defaultOptions: {
+        noFormControl: false
+      },
+      controller: /* @ngInject */["$scope", function controller($scope) {
+
+        var change = function change() {
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+        };
+
+        $scope.radio = {
+          change: change
+        };
+      }]
+    });
+
+    //datum
+    types.push({
+      name: 'datum',
+      templateUrl: 'datum.html',
+      wrapper: 'card',
+      defaultOptions: {
+        noFormControl: false
+      },
+      controller: /* @ngInject */["$scope", function controller($scope) {
+        var opts = $scope.options;
+        var datePickerCallback = function datePickerCallback(val) {
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+          if (typeof val === 'undefined') {
+            delete $scope.model[opts.key];
+            $scope.datepickerObject.inputDate = false;
+          } else {
+            $scope.datepickerObject.inputDate = val;
+            var datum = new moment(val);
+            $scope.model[opts.key] = datum.format('YYYY-MM-DD');
+          }
+          checkValidity();
+        };
+        var initDate = false;
+        if ($scope.model[opts.key]) {
+          initDate = moment($scope.model[opts.key], 'YYYY-MM-DD').toDate();
+        }
+        $scope.datepickerObject = {
+          titleLabel: $scope.to.label, //Optional
+          todayLabel: 'Today', //Optional
+          closeLabel: 'Close', //Optional
+          setLabel: 'Set', //Optional
+          setButtonType: 'button-positive', //Optional
+          todayButtonType: 'button-calm', //Optional
+          closeButtonType: 'button-stable', //Optional
+          inputDate: initDate, //Optional
+          mondayFirst: true, //Optional
+          //                        disabledDates: disabledDates, //Optional
+          //                        weekDaysList: weekDaysList, //Optional
+          //                        monthList: monthList, //Optional
+          templateType: 'modal', //Optional
+          showTodayButton: 'true', //Optional
+          modalHeaderColor: 'bar-stable', //Optional
+          modalFooterColor: 'bar-stable', //Optional
+          callback: function callback(val) {
+            //Mandatory
+            datePickerCallback(val);
+          }
+        };
+
+        function checkValidity() {
+          var valid;
+          if ($scope.to.required) {
+            valid = $scope.datepickerObject.inputDate instanceof Date;
+            console.log(valid);
+            $scope.fc.$setValidity('required', valid);
+          }
+        }
+      }]
+    });
+    //time
+    types.push({
+      name: 'time',
+      templateUrl: 'time.html',
+      wrapper: 'card',
+      defaultOptions: {
+        noFormControl: false
+      },
+      controller: /* @ngInject */["$scope", function controller($scope) {
+        var opts = $scope.options;
+        var timePickerCallback = function timePickerCallback(val) {
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+          if (typeof val === 'undefined') {
+            delete $scope.model[opts.key];
+            $scope.timePickerObject.inputEpochTime = undefined;
+          } else {
+            $scope.timePickerObject.inputEpochTime = val;
+            var hours = parseInt(val / 3600);
+            var minutes = val / 60 % 60;
+            if (String(hours).length < 2) {
+              hours = '0' + hours;
+            }
+            if (String(minutes).length < 2) {
+              minutes = '0' + minutes;
+            }
+            $scope.model[opts.key] = hours + ':' + minutes;
+          }
+          checkValidity();
+        };
+        var initTime = false;
+        if ($scope.model[opts.key]) {
+          var time = $scope.model[opts.key];
+          var hour = time.substr(11, 2);
+          var min = time.substr(14, 2);
+          initTime = hour * 60 * 60 + parseInt(min) * 60;
+        }
+        $scope.timePickerObject = {
+          inputEpochTime: initTime, //Optional
+          step: 1, //Optional
+          format: 12, //Optional
+          titleLabel: $scope.to.label, //Optional
+          setLabel: 'Set', //Optional
+          closeLabel: 'Close', //Optional
+          setButtonType: 'button-positive', //Optional
+          closeButtonType: 'button-stable', //Optional
+          callback: function callback(val) {
+            //Mandatory
+            timePickerCallback(val);
+          }
+        };
+
+        function checkValidity() {
+          var valid;
+          if ($scope.to.required) {
+            valid = $scope.timePickerObject.inputEpochTime !== 'undefined';
+            $scope.fc.$setValidity('required', valid);
+          }
+        }
+      }]
+    });
+    //datumtime
+    types.push({
+      name: 'datumtime',
+      templateUrl: 'datumtime.html',
+      wrapper: 'card',
+      defaultOptions: {
+        noFormControl: false
+      },
+      controller: /* @ngInject */["$scope", function controller($scope) {
+        var opts = $scope.options;
+
+        var setModel = function setModel() {
+          if ($scope.datepickerObject.inputDate instanceof Date && $scope.timePickerObject.inputEpochTime) {
+            var hours = parseInt($scope.timePickerObject.inputEpochTime / 3600);
+            var minutes = $scope.timePickerObject.inputEpochTime / 60 % 60;
+
+            var m = moment($scope.datepickerObject.inputDate);
+            m.hour(hours);
+            m.minute(minutes);
+            $scope.model[opts.key] = m.format('YYYY-MM-DD HH:mm');
+          } else {
+            delete $scope.model[opts.key];
+          }
+        };
+        var datePickerCallback = function datePickerCallback(val) {
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+          if (typeof val === 'undefined') {
+            delete $scope.model[opts.key];
+            $scope.datepickerObject.inputDate = false;
+          } else {
+            $scope.datepickerObject.inputDate = val;
+            setModel();
+          }
+          checkValidity();
+        };
+        var timePickerCallback = function timePickerCallback(val) {
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+          if (typeof val === 'undefined') {
+            delete $scope.model[opts.key];
+            $scope.timePickerObject.inputEpochTime = undefined;
+          } else {
+            $scope.timePickerObject.inputEpochTime = val;
+            setModel();
+          }
+          checkValidity();
+        };
+        var initDate = false;
+        if ($scope.model[opts.key]) {
+          initDate = moment($scope.model[opts.key], 'YYYY-MM-DD').toDate();
+        }
+        var initTime = false;
+        if ($scope.model[opts.key]) {
+          var time = $scope.model[opts.key];
+          var hour = time.substr(11, 2);
+          var min = time.substr(14, 2);
+          initTime = hour * 60 * 60 + parseInt(min) * 60;
+        }
+        $scope.timePickerObject = {
+          inputEpochTime: initTime, //Optional
+          step: 1, //Optional
+          format: 12, //Optional
+          titleLabel: $scope.to.label, //Optional
+          setLabel: 'Set', //Optional
+          closeLabel: 'Close', //Optional
+          setButtonType: 'button-positive', //Optional
+          closeButtonType: 'button-stable', //Optional
+          callback: function callback(val) {
+            //Mandatory
+            timePickerCallback(val);
+          }
+        };
+
+        function checkValidity() {
+          var valid;
+          if ($scope.to.required) {
+            valid = $scope.timePickerObject.inputEpochTime !== 'undefined';
+            $scope.fc.$setValidity('required', valid);
+          }
+        }
+
+        $scope.datepickerObject = {
+          titleLabel: $scope.to.label, //Optional
+          todayLabel: 'Today', //Optional
+          closeLabel: 'Close', //Optional
+          setLabel: 'Set', //Optional
+          setButtonType: 'button-positive', //Optional
+          todayButtonType: 'button-calm', //Optional
+          closeButtonType: 'button-stable', //Optional
+          inputDate: initDate, //Optional
+          mondayFirst: true, //Optional
+          //                        disabledDates: disabledDates, //Optional
+          //                        weekDaysList: weekDaysList, //Optional
+          //                        monthList: monthList, //Optional
+          templateType: 'modal', //Optional
+          showTodayButton: 'true', //Optional
+          modalHeaderColor: 'bar-stable', //Optional
+          modalFooterColor: 'bar-stable', //Optional
+          callback: function callback(val) {
+            //Mandatory
+            datePickerCallback(val);
+          }
+        };
+      }]
+    });
+    //input image and resize
+    types.push({
+      name: 'image',
+      templateUrl: 'image.html',
+      wrapper: 'card',
+      controller: /* @ngInject */["$scope", function controller($scope) {
+        var opts = $scope.options;
+        $scope.resizedSrc = '';
+        //event listener for file input
+        $('body').on('change', '#' + $scope.options.key, function (evt) {
+
+          var target = evt.dataTransfer || evt.target;
+          var file = target && target.files && target.files[0];
+          var options = { canvas: true, maxWidth: 1024 };
+          /*globals loadImage */
+          loadImage.parseMetaData(file, function (data) {
+            if (data.exif) {
+              options.orientation = data.exif.get('Orientation');
+            }
+            loadImage(file, function (img) {
+
+              $scope.$apply(function () {
+                $scope.resizedSrc = img.toDataURL('image/jpeg', 0.8);
+                $scope.model[opts.key] = img.toDataURL('image/jpeg', 0.8);
+              });
+
+              checkValidity();
+            }, options);
+          });
+        });
+        //event listener for click button
+        $scope.openFileDlg = function () {
+          $('#' + $scope.options.key).click();
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+        };
+
+        function checkValidity() {
+          var valid;
+
+          if ($scope.to.required) {
+            valid = angular.isDefined($scope.model[opts.key]) && $scope.model[opts.key].length > 0;
+            $scope.fc.$setValidity('required', valid);
+          }
+        }
+      }]
+    });
+    //Freehand
+    types.push({
+      name: 'freehand',
+      templateUrl: 'freehand.html',
+      wrapper: 'card',
+      controller: /* @ngInject */["$scope", function controller($scope) {
+        var opts = $scope.options;
+        $scope.resizedSrc = '';
+
+        $scope.checkValidity = function () {
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+          var valid;
+          if ($scope.to.required) {
+            valid = angular.isDefined($scope.model[opts.key]) && $scope.model[opts.key].length > 0;
+            $scope.fc.$setValidity('required', valid);
+          }
+        };
+      }]
+    });
+    //range
+    types.push({
+      name: 'range',
+      templateUrl: 'range.html',
+      wrapper: 'rangeWrapper'
+    });
+    //toggle
+    types.push({
+      name: 'toggle',
+      templateUrl: 'toggle.html',
+      wrapper: 'card'
+    });
+
+    types.push({
+      name: 'video',
+      templateUrl: 'video.html',
+      wrapper: 'card',
+      controller: /* @ngInject */["$scope", function controller($scope) {
+        var opts = $scope.options;
+
+        var checkValidity = function checkValidity() {
+          var valid;
+          $scope.fc.$setDirty();
+          $scope.fc.$setTouched();
+          if ($scope.to.required) {
+            valid = $scope.model[opts.key] ? true : false;
+            $scope.fc.$setValidity('required', valid);
+          }
+        };
+
+        var captureSuccess = function captureSuccess(mediaFiles) {
+          var i, path, len;
+          for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            $scope.model[opts.key] = mediaFiles[i];
+            console.log(mediaFiles[i], $scope.model);
+            var v = "<video controls='controls'>";
+            v += "<source src='" + $scope.model[opts.key].fullPath + " type='" + $scope.model[opts.key].type + "'>";
+            v += "</video>";
+            document.querySelector("#" + opts.key).innerHTML = v;
+
+            checkValidity(true);
+            $scope.$apply();
+          }
+        };
+        // capture error callback
+        var captureError = function captureError(error) {
+          navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+          $scope.model[opts.key] = null;
+          checkValidity();
+        };
+        $scope.start = function () {
+          navigator.device.capture.captureVideo(captureSuccess, captureError, { limit: 1, duration: parseInt(opts.templateOptions.videolength) });
+        };
+      }]
+    });
+
+    formlyConfigProvider.setType(types);
+  }]);
+})();
+'use strict';
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('card.html', '<div class="card" id="card{{options.key}}">\n' + '    <label class="item item-divider" for="q{{options.key}}"  ng-if="options.templateOptions.label" >\n' + '        {{options.templateOptions.label}}\n' + '    </label>\n' + '    <div class="item item-text-wrap card-body">\n' + '        <div class="card-description" ng-if="options.templateOptions.description" ng-bind-html="options.templateOptions.description"></div>\n' + '        <formly-transclude></formly-transclude>\n' + '        <div class="validation" ng-if="options.validation.errorExistsAndShouldBeVisible" ng-messages="options.formControl.$error">\n' + '           <div ng-messages-include="validation.html"></div> \n' + '           <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">\n' + '            {{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}   \n' + '           </div>\n' + '        </div>\n' + '    </div>\n' + '\n' + '</div>\n' + '<script type="text/ng-template" id="validation.html">\n' + '      <div ng-message="required">This field is required!</div>\n' + '      <div ng-message="minlength">Too short!</div>\n' + '      <div ng-message="maxlength">Too long!</div>\n' + '      <div ng-message="email">Invalid email address!</div>\n' + '    </script>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('datum.html', ' \n' + '<ionic-datepicker ng-model="model[options.key]" input-obj="datepickerObject" id="q{{options.key}}">\n' + '    <button class="button button-light" type="button">\n' + '        <i class="ion ion-android-calendar"></i>\n' + '        <span ng-show="datepickerObject.inputDate"> {{datepickerObject.inputDate| date:\'MM/dd/yyyy\'}} </span>\n' + '        <span ng-hide="datepickerObject.inputDate">\n' + '            Select a date \n' + '        </span>\n' + '    </button>\n' + '</ionic-datepicker>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('datumtime.html', '\n' + '<div  ng-model="model[options.key]"  id="q{{options.key}}" class="datumtime">\n' + '    <ionic-datepicker input-obj="datepickerObject">\n' + '        <button class="button button-light" type="button">\n' + '            <i class="ion ion-android-calendar"></i>\n' + '            <span ng-show="datepickerObject.inputDate"> {{datepickerObject.inputDate| date:\'MM/dd/yyyy\'}} </span>\n' + '            <span ng-hide="datepickerObject.inputDate">\n' + '                Select a Date\n' + '            </span>\n' + '        </button>\n' + '    </ionic-datepicker>\n' + '    \n' + '    <ionic-timepicker   input-obj="timePickerObject" >\n' + '      <button class="button button-light" type="button">\n' + '        <i class="ion ion-clock"></i>\n' + '        <standard-time-meridian  ng-show="timePickerObject.inputEpochTime" etime=\'timePickerObject.inputEpochTime\'></standard-time-meridian>\n' + '        <span ng-hide="timePickerObject.inputEpochTime">\n' + '                Select a Time\n' + '            </span>\n' + '      </button>\n' + '    </ionic-timepicker>\n' + '</div>\n' + '');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('freehand.html', '<signature-pad ng-model="model[options.key]" ng-change="checkValidity()" ></signature-pad>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('image.html', '<button class="button  button-block button-light" ng-click="openFileDlg()" type="button">\n' + '    <i class="ion ion-ios-camera"></i> Take a Photo\n' + '</button>\n' + '<input type="file" id="q{{options.key}}"  accept="image/*" style="display:none" capture="camera">\n' + '<input type="hidden"  ng-model="model[options.key]"/>\n' + '<div class="item item-image">\n' + '<img  ng-src="{{resizedSrc}}" ng-show="resizedSrc" class="full-image" id="q{{options.key}}Resized" />\n' + '</div>\n' + '');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('input.html', ' \n' + '    <input ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n' + '           type="{{options.templateOptions.type}}" id="q{{options.key}}">\n' + ' \n' + '');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('multiCheckbox.html', '<div class="radio-group">\n' + '    <div class="checkbox-list-wrapper">\n' + '        <ion-checkbox ng-repeat="(key, option) in to.options"  ng-model="multiCheckbox.checked[$index]"  ng-change="multiCheckbox.change()">{{option[to.labelProp || \'name\']}}</ion-checkbox>\n' + '    </div>   \n' + '</div>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('number.html', ' \n' + '    <input ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n' + '           type="number"  id="q{{options.key}}" pattern="\\d*">\n' + ' \n' + '');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('radio.html', '<div class="radio-group">\n' + '    <div class="list">\n' + '        <ion-radio ng-repeat="(key, option) in to.options"  tabindex="0"  ng-model="model[options.key]" ng-change="radio.change()"  ng-value="option[to.valueProp || \'value\']">{{option[to.labelProp || \'name\']}}</ion-radio>\n' + '    </div>   \n' + '</div>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('range.html', '<div class="item range" ng-class="\'range-\' + options.templateOptions.rangeClass">\n' + '  <i class="icon" ng-if="options.templateOptions.minIcon" ng-class="options.templateOptions.minIcon"></i>\n' + '  {{options.templateOptions.min}}\n' + '  <input type="range" min="{{options.templateOptions.min}}" max="{{options.templateOptions.max}}" step="{{options.templateOptions.step}}" value="{{options.templateOptions.value}}" ng-model="model[options.key]">\n' + '  <i class="icon" ng-if="options.templateOptions.maxIcon" ng-class="options.templateOptions.maxIcon"></i>\n' + '  {{options.templateOptions.max}}\n' + '</div>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('rangeWrapper.html', '<div class="card rangeWrapper">\n' + '    <label class="item item-divider" for="q{{options.key}}"  ng-if="options.templateOptions.label" >\n' + '        {{options.templateOptions.label}}<span class="badge badge-positive">{{model[options.key]?model[options.key]:\'-\'}}</span>\n' + '    </label>\n' + '    <div class="item item-text-wrap card-body">\n' + '        <div class="card-description" ng-if="options.templateOptions.description" ng-bind-html="options.templateOptions.description"></div>\n' + '        <formly-transclude></formly-transclude>\n' + '        <div class="validation" ng-if="options.validation.errorExistsAndShouldBeVisible" ng-messages="options.formControl.$error">\n' + '           <div ng-messages-include="validation.html"></div> \n' + '           <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">\n' + '            {{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}   \n' + '           </div>\n' + '        </div>\n' + '    </div>\n' + '\n' + '</div>\n' + '<script type="text/ng-template" id="validation.html">\n' + '      <div ng-message="required">This field is required!</div>\n' + '      <div ng-message="minlength">Too short!</div>\n' + '      <div ng-message="maxlength">Too long!</div>\n' + '      <div ng-message="email">Invalid email address!</div>\n' + '    </script>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('select.html', '<select ng-model="model[options.key]" \n' + '          ng-options="option[to.valueProp || \'value\'] as option[to.labelProp || \'name\'] group by option[to.groupProp || \'group\'] for option in to.options">\n' + '  </select>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('textarea.html', ' \n' + '    <textarea ng-model="model[options.key]" placeholder="{{options.templateOptions.placeholder}}"\n' + '           type="{{options.templateOptions.type}}" id="q{{options.key}}"></textarea>\n' + ' \n' + '');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('time.html', '<ionic-timepicker  ng-model="model[options.key]"  input-obj="timePickerObject" id="q{{options.key}}">\n' + '  <button class="button button-light" type="button">\n' + '    <i class="ion ion-clock"></i>\n' + '    <standard-time-meridian ng-show="timePickerObject.inputEpochTime" etime=\'timePickerObject.inputEpochTime\'></standard-time-meridian>\n' + '    <span ng-hide="timePickerObject.inputEpochTime">\n' + '             Select a Time\n' + '        </span>\n' + '  </button>\n' + '</ionic-timepicker>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('toggle.html', '<ion-toggle ng-model="model[options.key]" toggle-class="toggle-{{options.templateOptions.toggleClass}}">\n' + '   <span ng-bind-html="options.templateOptions.accept"></span>\n' + '</ion-toggle>');
+  }]);
+})();
+
+(function (module) {
+  try {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+  } catch (e) {
+    module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+  }
+  module.run(['$templateCache', function ($templateCache) {
+    $templateCache.put('video.html', '\n' + '<div class="videoArea" id="q{{options.key}}"></div>\n' + '<input type="hidden"  ng-model="model[options.key]"/>\n' + '<button ng-click="start()" class="button button-block button-assertive icon-left ion-record" type="button">\n' + '    Start recording\n' + '</button>');
+  }]);
+})();

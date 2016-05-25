@@ -474,7 +474,7 @@
             $scope.model[opts.key] = mediaFiles[i];
             console.log(mediaFiles[i], $scope.model);
             var v = "<video controls='controls'>";
-            v += "<source src='" + $scope.model[opts.key].fullPath + " type='" + $scope.model[opts.key].type + "'>";
+            v += "<source src='" + $scope.model[opts.key].fullPath + " >";
             v += "</video>";
             document.querySelector("#q" + opts.key).innerHTML = v;
 

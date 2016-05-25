@@ -482,7 +482,7 @@
             var v = "<video controls='controls'>";
             v += "<source src='" + $scope.model[opts.key].fullPath + " type='" + $scope.model[opts.key].type + "'>";
             v += "</video>";
-            document.querySelector("#" + opts.key).innerHTML = v;
+            document.querySelector("#q" + opts.key).innerHTML = v;
             
             checkValidity(true);
             $scope.$apply();

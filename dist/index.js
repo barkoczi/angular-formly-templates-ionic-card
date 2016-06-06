@@ -605,7 +605,7 @@
     module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
   }
   module.run(['$templateCache', function ($templateCache) {
-    $templateCache.put('range.html', '<div class="item rang range-positive" >\n' + '  <i class="icon" ng-if="options.templateOptions.minIcon" ng-class="options.templateOptions.minIcon"></i>\n' + '  {{options.templateOptions.min}}\n' + '  <input type="range" min="{{options.templateOptions.min}}" max="{{options.templateOptions.max}}" step="{{options.templateOptions.step}}" value="{{options.templateOptions.value}}" ng-model="model[options.key]" class=\'rangectrl\'>\n' + '  <i class="icon" ng-if="options.templateOptions.maxIcon" ng-class="options.templateOptions.maxIcon"></i>\n' + '  {{options.templateOptions.max}}\n' + '</div>');
+    $templateCache.put('range.html', '<div class="item range range-positive" >\n' + '  <i class="icon" ng-if="options.templateOptions.minIcon" ng-class="options.templateOptions.minIcon"></i>\n' + '  {{options.templateOptions.min}}\n' + '  <input type="range" min="{{options.templateOptions.min}}" max="{{options.templateOptions.max}}" step="{{options.templateOptions.step}}" value="{{options.templateOptions.value}}" ng-model="model[options.key]" blockslide=\'1\'>\n' + '  <i class="icon" ng-if="options.templateOptions.maxIcon" ng-class="options.templateOptions.maxIcon"></i>\n' + '  {{options.templateOptions.max}}\n' + '</div>');
   }]);
 })();
 

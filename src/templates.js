@@ -5,6 +5,22 @@ try {
   module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('audio.html',
+    '<div class="audioArea" id="q{{options.key}}"></div>\n' +
+    '<input type="hidden"  ng-model="model[options.key]"/>\n' +
+    '<button ng-click="start()" class="button button-block button-assertive icon-left ion-record" type="button">\n' +
+    '    Start recording\n' +
+    '</button>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+} catch (e) {
+  module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('card.html',
     '<div class="card" id="card{{options.key}}">\n' +
     '    <label class="item item-divider" for="q{{options.key}}"  ng-if="options.templateOptions.label" >\n' +
@@ -244,6 +260,21 @@ module.run(['$templateCache', function($templateCache) {
     '<select ng-model="model[options.key]" \n' +
     '          ng-options="option[to.valueProp || \'value\'] as option[to.labelProp || \'name\'] group by option[to.groupProp || \'group\'] for option in to.options">\n' +
     '  </select>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('qm-angular-formly-templates-ionic-card-templates');
+} catch (e) {
+  module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('stripe.html',
+    '<input ng-model="cardNumber" placeholder="Card Number" type="number" id="cardNumber{{options.key}}">\n' +
+    '<input ng-model="expMonth" placeholder="Exp Month" type="number" id="expMonth{{options.key}}">\n' +
+    '<input ng-model="expYear" placeholder="Exp Year" type="number" id="expMonth{{options.year}}">\n' +
+    '<input ng-model="cvc" placeholder="cvc" type="number" id="cvc{{options.year}}">');
 }]);
 })();
 

@@ -581,7 +581,55 @@
         types.push({
             name: 'stripe',
             templateUrl: 'stripe.html',
-            wrapper: 'card'
+            wrapper: 'card',
+            controller: /* @ngInject */ function($scope, $timeout) {
+                var opts = $scope.options;
+
+                var checkValidity = function() {
+                    var valid;
+                    $scope.fc[0].$setDirty();
+                    $scope.fc[0].$setTouched();
+                    if ($scope.to.required) {
+                        valid = $scope.model[opts.key] ? true : false;
+                        $scope.fc[0].$setValidity('required', valid);
+                    }
+                };
+
+                var stripeResponseHandler = function(status, response) {
+                    $timeout(function() {
+                        if (response.error) {
+                            $scope.stripeErrorMessage = response.error.message;
+
+                            $scope.model[opts.key] = "";
+                        } else {
+                            $scope.stripeErrorMessage = "";
+                            $scope.model[opts.key] = response.id;
+                        }
+                        checkValidity();
+                    });
+                };
+
+                $scope.submitStripe = function() {
+                    if (
+                        typeof $scope.cardNumber !== 'undefined' &&
+                        typeof $scope.cvc !== 'undefined' &&
+                        typeof $scope.expMonth !== 'undefined' &&
+                        typeof $scope.expYear !== 'undefined' &&
+                        typeof $scope.zip !== 'undefined' && $scope.zip.length>3
+                        ) {
+                        Stripe.card.createToken({
+                            number: $scope.cardNumber,
+                            cvc: $scope.cvc,
+                            exp_month: $scope.expMonth,
+                            exp_year: $scope.expYear,
+                            address_zip: $scope.zip
+                        }, stripeResponseHandler);
+                    }
+                };
+
+
+
+            }
         });
 
 

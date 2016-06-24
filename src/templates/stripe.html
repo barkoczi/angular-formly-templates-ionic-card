@@ -1,4 +1,42 @@
-<input ng-model="cardNumber" placeholder="Card Number" type="number" id="cardNumber{{options.key}}">
-<input ng-model="expMonth" placeholder="Exp Month" type="number" id="expMonth{{options.key}}">
-<input ng-model="expYear" placeholder="Exp Year" type="number" id="expMonth{{options.year}}">
-<input ng-model="cvc" placeholder="cvc" type="number" id="cvc{{options.year}}">
+<input ng-model="model[options.key]" type="hidden" id="q{{options.key}}">
+<div class="stripe-card">
+    <div class="row">
+        <div class="col">
+            <label>
+                <span>Credit Card Number</span>
+                <input ng-model="cardNumber" placeholder="Card Number" cc-format cc-number type="text" class="cc-number" id="cardNumber{{options.key}}" name="cardNumber{{options.key}}" ng-change="submitStripe()">
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-67">
+            <label>
+                <span>Expiration</span></label>
+            <input ng-model="expMonth" placeholder="MM" cc-exp-month class="cc-month" ng-change="submitStripe()" type="text" id="expMonth{{options.key}}" name="expMonth{{options.key}}">
+            <input ng-model="expYear" placeholder="YYYY" class="cc-year" ng-change="submitStripe()" cc-exp-year full-year type="text" id="expYear{{options.key}}" name="expYear{{options.key}}">
+        </div>
+        <div class="col col-33">
+            <label>
+                <span>CVC</span>
+                <input ng-model="cvc" cc-cvc placeholder="CVC" class="cvc" type="text" ng-change="submitStripe()" id="cvc{{options.key}}" name="cvc{{options.key}}">
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-50">
+            <label>
+                <span>ZIP/Postal Code</span>
+                <input ng-model="zip" placeholder="ZIP/Postal Code" type="text"  id="zip{{options.key}}" name="zip{{options.key}}" ng-change="submitStripe()">
+            </label>
+        </div>
+ 
+             
+ 
+    </div>
+    <div ng-show="stripeErrorMessage" class="row">
+        <div class="col assertive text-center">
+            <i class="ionicons ion-alert-circled"></i>{{stripeErrorMessage}}
+        </div>
+    </div>
+    <i class="ionicons ion-checkmark-circled stripeChecked balanced" ng-show="model[options.key]"></i>
+</div>

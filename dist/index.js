@@ -573,7 +573,46 @@
         types.push({
             name: 'stripe',
             templateUrl: 'stripe.html',
-            wrapper: 'card'
+            wrapper: 'card',
+            controller: /* @ngInject */["$scope", "$timeout", function controller($scope, $timeout) {
+                var opts = $scope.options;
+
+                var checkValidity = function checkValidity() {
+                    var valid;
+                    $scope.fc[0].$setDirty();
+                    $scope.fc[0].$setTouched();
+                    if ($scope.to.required) {
+                        valid = $scope.model[opts.key] ? true : false;
+                        $scope.fc[0].$setValidity('required', valid);
+                    }
+                };
+
+                var stripeResponseHandler = function stripeResponseHandler(status, response) {
+                    $timeout(function () {
+                        if (response.error) {
+                            $scope.stripeErrorMessage = response.error.message;
+
+                            $scope.model[opts.key] = "";
+                        } else {
+                            $scope.stripeErrorMessage = "";
+                            $scope.model[opts.key] = response.id;
+                        }
+                        checkValidity();
+                    });
+                };
+
+                $scope.submitStripe = function () {
+                    if (typeof $scope.cardNumber !== 'undefined' && typeof $scope.cvc !== 'undefined' && typeof $scope.expMonth !== 'undefined' && typeof $scope.expYear !== 'undefined' && typeof $scope.zip !== 'undefined' && $scope.zip.length > 3) {
+                        Stripe.card.createToken({
+                            number: $scope.cardNumber,
+                            cvc: $scope.cvc,
+                            exp_month: $scope.expMonth,
+                            exp_year: $scope.expYear,
+                            address_zip: $scope.zip
+                        }, stripeResponseHandler);
+                    }
+                };
+            }]
         });
 
         formlyConfigProvider.setType(types);
@@ -731,7 +770,7 @@
     module = angular.module('qm-angular-formly-templates-ionic-card-templates', []);
   }
   module.run(['$templateCache', function ($templateCache) {
-    $templateCache.put('stripe.html', '<input ng-model="cardNumber" placeholder="Card Number" type="number" id="cardNumber{{options.key}}">\n' + '<input ng-model="expMonth" placeholder="Exp Month" type="number" id="expMonth{{options.key}}">\n' + '<input ng-model="expYear" placeholder="Exp Year" type="number" id="expMonth{{options.year}}">\n' + '<input ng-model="cvc" placeholder="cvc" type="number" id="cvc{{options.year}}">');
+    $templateCache.put('stripe.html', '<input ng-model="model[options.key]" type="hidden" id="q{{options.key}}">\n' + '<div class="stripe-card">\n' + '    <div class="row">\n' + '        <div class="col">\n' + '            <label>\n' + '                <span>Credit Card Number</span>\n' + '                <input ng-model="cardNumber" placeholder="Card Number" cc-format cc-number type="text" class="cc-number" id="cardNumber{{options.key}}" name="cardNumber{{options.key}}" ng-change="submitStripe()">\n' + '            </label>\n' + '        </div>\n' + '    </div>\n' + '    <div class="row">\n' + '        <div class="col col-67">\n' + '            <label>\n' + '                <span>Expiration</span></label>\n' + '            <input ng-model="expMonth" placeholder="MM" cc-exp-month class="cc-month" ng-change="submitStripe()" type="text" id="expMonth{{options.key}}" name="expMonth{{options.key}}">\n' + '            <input ng-model="expYear" placeholder="YYYY" class="cc-year" ng-change="submitStripe()" cc-exp-year full-year type="text" id="expYear{{options.key}}" name="expYear{{options.key}}">\n' + '        </div>\n' + '        <div class="col col-33">\n' + '            <label>\n' + '                <span>CVC</span>\n' + '                <input ng-model="cvc" cc-cvc placeholder="CVC" class="cvc" type="text" ng-change="submitStripe()" id="cvc{{options.key}}" name="cvc{{options.key}}">\n' + '            </label>\n' + '        </div>\n' + '    </div>\n' + '    <div class="row">\n' + '        <div class="col col-50">\n' + '            <label>\n' + '                <span>ZIP/Postal Code</span>\n' + '                <input ng-model="zip" placeholder="ZIP/Postal Code" type="text"  id="zip{{options.key}}" name="zip{{options.key}}" ng-change="submitStripe()">\n' + '            </label>\n' + '        </div>\n' + ' \n' + '             \n' + ' \n' + '    </div>\n' + '    <div ng-show="stripeErrorMessage" class="row">\n' + '        <div class="col assertive text-center">\n' + '            <i class="ionicons ion-alert-circled"></i>{{stripeErrorMessage}}\n' + '        </div>\n' + '    </div>\n' + '    <i class="ionicons ion-checkmark-circled stripeChecked balanced" ng-show="model[options.key]"></i>\n' + '</div>');
   }]);
 })();
 
